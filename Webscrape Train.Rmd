@@ -7,6 +7,8 @@ date: "2024-02-19"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(rvest)
+library(stringr)
+library(xml2)
 ```
 
 # Training 1
@@ -21,25 +23,27 @@ html_product <- document %>% html_elements("li.product")
 
 Breaking the data into its tags
 ```{r}
-# selecting the "a" HTML element storing the product URL 
-a_element <- html_product %>% html_element("a") 
-# selecting the "img" HTML element storing the product image 
-img_element <- html_product %>% html_element("img") 
+# # selecting the "a" HTML element storing the product URL 
+# a_element <- html_product %>% html_element("a") 
+# # selecting the "img" HTML element storing the product image 
+# img_element <- html_product %>% html_element("img") 
 # selecting the "h2" HTML element storing the product name 
 h2_element <- html_product %>% html_element("h2") 
-# selecting the "span" HTML element storing the product price 
-span_element <- html_product %>% html_element("span")
+# # selecting the "span" HTML element storing the product price 
+# span_element <- html_product %>% html_element("span")
 ```
 
-## Walmart example
+
+## Extracting text 
+https://www.youtube.com/watch?v=smriIBG08ok is the source, getting data out of our html object
+```{r}
+# Creates a vector of strings
+temp = document %>% 
+  html_nodes("h2") %>%
+  html_text()
+```
+## Apartments example
 
 ```{r}
-document <- read_html("https://www.walmart.com/ip/Great-Value-Dark-Red-Kidney-Beans-15-5-oz/10534045?athbdg=L1100&from=/search")
-
-document[0][0]
+document <- read_html("https://www.apartments.com/boone-ia/2-bedrooms/")
 ```
-
-
-
-
-
