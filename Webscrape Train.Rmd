@@ -46,4 +46,51 @@ temp = document %>%
 
 ```{r}
 document <- read_html("https://www.apartments.com/boone-ia/2-bedrooms/")
+doc <- as.character(document)
 ```
+
+## Attempt using selenium
+
+aid from https://www.youtube.com/watch?v=U1BrIPmhx10
+
+```{r}
+library(tidyverse)
+library(RSelenium)
+library(rvest)
+library(httr)
+library(stringr)
+library(netstat)
+
+rD <- rsDriver(verbose=FALSE)
+rD <- remdr[["client"]]
+
+# navigates the tab to firefox
+remdr$navigate("https://www.apartments.com")
+```
+
+Parsing out the HTML we want
+
+data will be stored in a variety of strings similar to: 
+
+"<p class="property-pricing">$805 - 1,060</p>"
+
+Get our full html
+```{r}
+Sys.sleep(5) # give the page time to fully load
+html <- remDr$getPageSource()[[1]]
+```
+
+Parse out the prices
+```{r}
+# Use a regular expression to extract content between <p> tags
+match <- str_match(html, '<p class="property-pricing">(.*?)<\\/p>')
+
+if (!is.na(match[2])) {
+  content_between_tags <- match[2]
+  print(content_between_tags)
+} else {
+  print("No match found.")
+}
+```
+
+
