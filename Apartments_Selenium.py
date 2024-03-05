@@ -8,8 +8,8 @@ import time
 import csv
 import re
 
-# college_file_list = ['ames-ia', 'college-station-tx']
-college_file_list = []
+college_file_list = ['ames-ia', 'college-station-tx']
+# college_file_list = []
     
     # Use the pattern to match and filter characters
     
@@ -37,13 +37,12 @@ for city in college_file_list:
     time.sleep(2)
     filename = city + "-html.txt"
     with open(filename, 'w') as file:
-        file.write(html)
+        file.write(html.encode('utf-8').decode('ascii', 'ignore'))
     file.close()
-    print(html)
     ## Insert some gabe code here! 
     i= i+1
     time.sleep(3)
-    if i > 5:
+    if i > 2:
         break
 
 driver.close()

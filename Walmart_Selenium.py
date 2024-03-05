@@ -1,4 +1,5 @@
 ## https://www.youtube.com/watch?v=SPM1tm2ZdK4&t=855s
+## https://www.youtube.com/watch?v=USrjHgO9Niw python selenium button clicking
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -21,12 +22,11 @@ options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
                           options=options )
 
-
+# Dark red kidney beans ames iowa
 driver.get("https://www.target.com/p/bush-39-s-dark-red-kidney-beans-16oz/-/A-13593955#lnk")
 
-# Dark red kidney beans ames iowa
-# https://www.target.com/p/bush-39-s-dark-red-kidney-beans-16oz/-/A-13593955#lnk
-html = driver.page_source
+# ID of the button id="zip-code-id-btn"
+
 time.sleep(5)
 
 
