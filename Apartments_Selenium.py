@@ -9,7 +9,7 @@ import re
 import pandas as pd
 
 college_file_list = ['ames-ia', 'college-station-tx', 'minneapolis-mn']
-# college_file_list = []/
+# college_file_list = []
     
     # Use the pattern to match and filter characters
     
@@ -35,11 +35,9 @@ for city in college_file_list:
 
     html = driver.page_source
     time.sleep(2)
-    # filename = city + "-html.txt"
-    # with open(filename, 'w') as file:
-    #     file.write(html.encode('utf-8').decode('ascii', 'ignore'))
-    # file.close()
-    ## Insert some gabe code here! 
+
+    ## Insert some fancy regex here.
+    
     i= i+1
     if i > 3:
         break
